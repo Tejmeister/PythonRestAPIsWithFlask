@@ -7,7 +7,6 @@ from werkzeug.wrappers import request
 app = Flask(__name__)
 api = Api(app)
 
-
 items = []
 
 class Item(Resource):
@@ -19,9 +18,9 @@ class Item(Resource):
 		return {'message': "Item not found"}, 404
 
 	def post(self, name):
-		item = [item for item in items if item['name'] == name]
-		if item:
-			return {'message: Item already exist'}
+		#item = [item for item in items if item['name'] == name]
+		if next(filter(lambda x: x['name'] == name, items), None):
+			return {'message': f"Item with name {name} already exist"}, 400
 		data = request.get_json()
 		item = {'name': name, 'price':data['price']}
 		items.append(item)
