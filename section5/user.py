@@ -57,7 +57,7 @@ class UserRegister(Resource):
 		connection = sqlite3.connect('data.db')
 		cursor = connection.cursor()
 
-		query = f"INSERT INTO {cls.TABLE_NAME} VALUES (NULL, ?, ?)"
+		query = f"INSERT INTO {self.TABLE_NAME} VALUES (NULL, ?, ?)"
 		cursor.execute(query, (data['username'], data['password']))
 
 		connection.commit()
