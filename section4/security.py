@@ -34,7 +34,7 @@ userid_mapping = {u.id: u for u in users}
 
 def authenticate(username, password):
 	user = username_mapping.get(username, None)
-	if user and safe_str_cmp(user['password'], password):
+	if user and safe_str_cmp(user.password, password):
 		return user
 
 
