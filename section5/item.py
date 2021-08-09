@@ -94,7 +94,7 @@ class Item(Resource):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
 
-        query = "UPDATE {cls.TABLE_NAME} SET price=? WHERE name=?"
+        query = f"UPDATE {cls.TABLE_NAME} SET price=? WHERE name=?"
         cursor.execute(query, (item['price'], item['name']))
 
         connection.commit()
@@ -108,7 +108,7 @@ class ItemList(Resource):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
 
-        query = "SELECT * FROM {self.TABLE_NAME}"
+        query = f"SELECT * FROM {self.TABLE_NAME}"
         result = cursor.execute(query)
         items = []
         for row in result:

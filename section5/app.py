@@ -11,7 +11,7 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 app.secret_key = 'jose'
 api = Api(app)
 
-jwt = JWT(app, authenticate, identity)
+jwt = JWT(app=app, authentication_handler=authenticate, identity_handler=identity)
 
 api.add_resource(Item, '/item/<string:name>')
 api.add_resource(ItemList, '/items')
