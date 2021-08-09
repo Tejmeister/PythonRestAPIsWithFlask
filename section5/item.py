@@ -25,7 +25,7 @@ class Item(Resource):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
 
-        query = "SELECT * FROM {table} WHERE name=?".format(table=cls.TABLE_NAME)
+        query = f"SELECT * FROM {cls.TABLE_NAME} WHERE name=?"
         result = cursor.execute(query, (name,))
         row = result.fetchone()
         connection.close()
@@ -53,7 +53,7 @@ class Item(Resource):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
 
-        query = "INSERT INTO {table} VALUES(?, ?)".format(table=cls.TABLE_NAME)
+        query = f"INSERT INTO {cls.TABLE_NAME} VALUES(?, ?)"
         cursor.execute(query, (item['name'], item['price']))
 
         connection.commit()
@@ -64,7 +64,7 @@ class Item(Resource):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
 
-        query = "DELETE FROM {table} WHERE name=?".format(table=self.TABLE_NAME)
+        query = f"DELETE FROM {self.TABLE_NAME} WHERE name=?"
         cursor.execute(query, (name,))
 
         connection.commit()
@@ -94,7 +94,7 @@ class Item(Resource):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
 
-        query = "UPDATE {table} SET price=? WHERE name=?".format(table=cls.TABLE_NAME)
+        query = "UPDATE {cls.TABLE_NAME} SET price=? WHERE name=?"
         cursor.execute(query, (item['price'], item['name']))
 
         connection.commit()
@@ -108,7 +108,7 @@ class ItemList(Resource):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
 
-        query = "SELECT * FROM {table}".format(table=self.TABLE_NAME)
+        query = "SELECT * FROM {self.TABLE_NAME}"
         result = cursor.execute(query)
         items = []
         for row in result:

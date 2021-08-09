@@ -13,7 +13,7 @@ class User():
 		connection = sqlite3.connect('data.db')
 		cursor = connection.cursor()
 
-		query = "SELECT * FROM {table} WHERE username=?".format(table=cls.TABLE_NAME)
+		query = f"SELECT * FROM {cls.TABLE_NAME} WHERE username=?"
 		result = cursor.execute(query, (username, ))
 		row = result.fetchone()
 		if row:
@@ -29,7 +29,7 @@ class User():
 		connection = sqlite3.connect('data.db')
 		cursor = connection.cursor()
 
-		query = "SELECT * FROM {table} WHERE id=?".format(table=cls.TABLE_NAME)
+		query = f"SELECT * FROM {cls.TABLE_NAME} WHERE id=?"
 		result = cursor.execute(query, (_id, ))
 		row = result.fetchone()
 		if row:
@@ -57,7 +57,7 @@ class UserRegister(Resource):
 		connection = sqlite3.connect('data.db')
 		cursor = connection.cursor()
 
-		query = "INSERT INTO {table} VALUES (NULL, ?, ?)".format(table=self.TABLE_NAME)
+		query = f"INSERT INTO {cls.TABLE_NAME} VALUES (NULL, ?, ?)"
 		cursor.execute(query, (data['username'], data['password']))
 
 		connection.commit()
