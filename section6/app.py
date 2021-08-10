@@ -8,7 +8,7 @@ from resources.item import Item, ItemList
 
 app = Flask(__name__)
 app.config['PROPAGATE_EXCEPTIONS'] = True
-app.secret_key = 'jose'
+app.secret_key = 'Tejas'
 api = Api(app)
 
 jwt = JWT(app=app, authentication_handler=authenticate, identity_handler=identity)
