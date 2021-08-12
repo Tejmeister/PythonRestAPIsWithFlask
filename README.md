@@ -1,4 +1,3 @@
-[_TOC_]
 # Introduction
 This Project contains the code which I developed while learning REST APIs in python using Flask from the course https://www.udemy.com/course/rest-api-flask-and-python/
 
