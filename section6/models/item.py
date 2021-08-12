@@ -2,12 +2,15 @@ from db import db
 
 
 class ItemModel(db.Model):
+	# Must be __tablename__ as that is what SQLAlchemy expects
 	__tablename__ = 'items'
 
+	# Similar to bean in Java, specify which fields are to be made columns in db
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(80))
 	price = db.Column(db.Float(precision=2))
 
+	# adds a relatonship between StoreModel and ItemModel
 	store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
 	store = db.relationship('StoreModel')
 
