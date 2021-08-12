@@ -13,6 +13,7 @@ jwt = JWT(app=app, authentication_handler=authenticate, identity_handler=identit
 items = []
 
 class Item(Resource):
+	# Used to parse the request body
 	parser = reqparse.RequestParser()
 	parser.add_argument('price', type=float, required = True, help="This field cannot be blank")
 
