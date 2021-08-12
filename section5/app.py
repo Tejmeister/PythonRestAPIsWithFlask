@@ -7,6 +7,7 @@ from user import UserRegister
 from item import Item, ItemList
 
 app = Flask(__name__)
+# Helps to propogate the actual error codes in the response which might have been generated inside the code
 app.config['PROPAGATE_EXCEPTIONS'] = True
 app.secret_key = 'Tejas'
 api = Api(app)
@@ -18,4 +19,4 @@ api.add_resource(ItemList, '/items')
 api.add_resource(UserRegister, '/register')
 
 if __name__ == '__main__':
-	app.run(debug=True)  # important to mention debug=True
+	app.run(debug=True) 
